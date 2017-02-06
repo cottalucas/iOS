@@ -11,14 +11,13 @@ import Foundation
 2. Declare a bool called `sick` with an initial value of true or false.
 3. Write a statement such that when `sick` is true the function `rest()` is called.
 */
+func rest(){
+    print("Stays in bed.")
+}
 
-/*: 
-### Exercise 11
+var sick = true
 
-1. Write a function called `goToConcert()` that prints out the following message: "That vocalist is incredible!"
-2. Declare two bools called `finishedWork` and `gotTickets` with initial values of true or false.
-3. Write a statement such that when both `finishedWork` and `gotTickets` are true the function `goToConcert()` is called.
- */
+sick ? rest() : print("You are ready to work!")
 
 /*:
 ### Exercise 12
@@ -45,14 +44,14 @@ var game = "Slow adventures with Morris the Lorris"
 
 var bugs = 9
 var hasMusic = true
-var numberOfLevels = 7
+var numberOfLevels = 6
 
 func release() {
     print("\(game) is now ready for sale.")
 }
 
 func checkForRelease(bugs: Int, music: Bool, levels: Int) {
-    
+    bugs < 10 && music && levels > 5 ? release() : print("\(game) doesn't achieve basic criteria to be released. Please fix the issues and try again.")
 }
 
 checkForRelease(bugs: bugs, music: hasMusic, levels: numberOfLevels)
@@ -79,10 +78,24 @@ var canFinishRun: Bool = true
 
 func checkTrainingStatus(name: String, bike: Bool, run: Bool) {
     //TODO: Add your if, else-if statement here!
+    if canFinishRun && canFinishBike {
+        print("\(name) is ready! She can perform both portions")
+    } else {
+        if !canFinishRun && !canFinishBike {
+            print("\(name) is very not ready! She can't perform any portion.")
+        } else if !canFinishBike {
+            print("\(name) can't finish biking.")
+        } else {
+            print("\(name) can't finish running.")
+        }
+    }
 }
 
 checkTrainingStatus(name: name, bike: canFinishBike, run: canFinishRun)
 
+//https://review.udacity.com/#!/rubrics/520/view
+//the review document online specify a triathlon (swim, bike, and run) as criteria. However the exercise asks for two categories (run and bike).
+//the logic is pretty much the same. I hope this fits the needs.
 /*:
  ****
  [Table of Contents](Table%20of%20Contents) | [Previous](@previous) | [Next](@next)
