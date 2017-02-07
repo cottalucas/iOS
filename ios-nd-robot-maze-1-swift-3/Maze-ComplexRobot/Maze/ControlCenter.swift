@@ -10,7 +10,11 @@ class ControlCenter {
         
     func moveComplexRobot(robot: ComplexRobot) {
         
-        robot.move()
+        robot.move(2)
+        robot.rotateLeft()
+        robot.move(3)
+        robot.rotateLeft()
+        robot.move(1)
 
     }
 }

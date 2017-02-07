@@ -43,8 +43,8 @@ Change the values of the variables and see how the output changes.
 var game = "Slow adventures with Morris the Lorris"
 
 var bugs = 9
-var hasMusic = false
-var numberOfLevels = 6
+var hasMusic = true
+var numberOfLevels = 5
 
 func release() {
     print("\(game) is now ready for sale.")
@@ -53,10 +53,14 @@ func release() {
 func checkForRelease(bugs: Int, music: Bool, levels: Int) {
     if bugs < 10 && music && levels > 5 {
         release()
-    } else if !music {
-        print("\(game) doesn't achieve the music content criteria to be released. ")
+    } else if !music && bugs < 10 && levels > 5 {
+        print("\(game) doesn't have music. Please fix and try again!")
+    } else if music && bugs >= 10 && levels > 5 {
+        print("\(game) have more than 9 bugs. Please fix and try again!")
+    } else if music && bugs < 10 && levels <= 5 {
+        print("\(game) doesn't have at least 6 levels. Please fix and try again!")
     } else {
-        print("\(game) doesn't achieve the one or more criterias to be released. ")
+        print("\(game) doesn't achieve two or more criterias. Please fix and try again!")
     }
 }
 
