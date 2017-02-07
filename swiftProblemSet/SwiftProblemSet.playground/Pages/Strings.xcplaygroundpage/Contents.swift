@@ -33,7 +33,7 @@ print("$\(numOfPennies/100).\(numOfPennies%100)", terminator: "")
 let averageMonthlyEarnings: Float = 2500
 var averageRent: Float = 800
 //var weeklyEarningsString = "On average, millenials spend X% of their income on rent."
-var weeklyEarningsString = "On average, millenials spend \(averageRent/averageMonthlyEarnings)% of their income on rent."
+var weeklyEarningsString = "On average, millenials spend \((averageRent/averageMonthlyEarnings)*100)% of their income on rent."
 /*:
  ****
  [Table of Contents](Table%20of%20Contents) | [Previous](@previous) | [Next](@next)

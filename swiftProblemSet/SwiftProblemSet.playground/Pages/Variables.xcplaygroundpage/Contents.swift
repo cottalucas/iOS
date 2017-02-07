@@ -51,7 +51,7 @@ let reversedString = String(stringToReverse.characters.reversed())
 var hungerLevel: Int
 let winnerScore: Int
 let studentBirth: String
-let updateArea: String
+var updateArea: String
 /*:
  ****
  [Table of Contents](Table%20of%20Contents) | [Previous](@previous) | [Next](@next)
