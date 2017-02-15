@@ -14,6 +14,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var songLyrics: UITextView!
     
     //
+    //Fixing the app orientation on portrait
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return UIInterfaceOrientation.portrait
+    }
+    
+    //
     //Changing "return" button of the keyboard to "Done"
     
     override func viewDidLoad() {
