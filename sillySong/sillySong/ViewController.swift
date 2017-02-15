@@ -13,10 +13,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var nameInsert: UITextField!
     @IBOutlet weak var songLyrics: UITextView!
     
+    //
+    //Changing "return" button of the keyboard to "Done"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.nameInsert.delegate = self
+        nameInsert.delegate = self
+        nameInsert.returnKeyType = .go
     }
 
     //
@@ -27,8 +30,14 @@ class ViewController: UIViewController {
         //no accents or uppercase allowed. After getting the range index of the first vowel, the function trim the name from indexStart to there.
         let nameShortVersion = name.lowercased().folding(options: .diacriticInsensitive, locale: .current)
         let vowelSet = CharacterSet(charactersIn: "aeiou")
-        let range = nameShortVersion.rangeOfCharacter(from: vowelSet)
-        return nameShortVersion.substring(from: range!.lowerBound)
+        
+        if let range = nameShortVersion.rangeOfCharacter(from: vowelSet) {
+            return nameShortVersion.substring(from: range.lowerBound)
+        //
+        // in case of names without vowels
+        } else {
+            return nameShortVersion
+        }
     }
     
     //
@@ -78,10 +87,9 @@ class ViewController: UIViewController {
 }
 
 //
-//Changing "return" button of the keyboard to "Done", generating the lyrics, and hidding the keyboard just after.
+//Generating the lyrics, and hidding the keyboard just after.
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.returnKeyType = .go
         textField.resignFirstResponder()
         return false
     }
