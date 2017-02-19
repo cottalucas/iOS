@@ -17,6 +17,20 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     var audioRecorded: AVAudioRecorder!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        stopButton.isEnabled = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     //
     //record button by tapping, not holding.
     @IBAction func record(_ sender: Any) {
@@ -72,22 +86,25 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        
+        if flag {
+            performSegue(withIdentifier: "stopRecording", sender: audioRecorded.url)
+        } else {
+            //
+            //in case of any problem in the recording a message will inform the user with an alert message
+            let alert = UIAlertController(title: "Error", message: "Recording unsucessful", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        stopButton.isEnabled = false
-    }
+    //
+    //before the segue is triggered the record audio file need to be prepared to be send after the segue be called
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "stopRecording"{
+            let playSoundsVC = segue.destination as! PlaySoundsViewController
+            let recordedAudioURL = sender as! URL
+            playSoundsVC.recordedAudioURL = recordedAudioURL
+        }
+   }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
-
