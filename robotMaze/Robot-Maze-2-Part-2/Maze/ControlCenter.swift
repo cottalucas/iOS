@@ -3,6 +3,7 @@
 //  Maze
 //
 //  Created by Jarrod Parkes on 8/14/15.
+//  Implemented by Lucas Cotta on 27/2/17.
 //  Copyright © 2015 Udacity, Inc. All rights reserved.
 //
 import UIKit
@@ -10,52 +11,46 @@ import UIKit
 class ControlCenter {
 
     var mazeController: MazeController!
+    
+    // MARK: Basic heuristic, which determines whether how the IA robot will move.
 
     func moveComplexRobot(_ myRobot: ComplexRobotObject) {
       
-    // You may want to paste your Part 1 implementation of moveComplexRobot() here
+        //
+        // Check if the robot is facing a wall or not
+        let robotIsBlocked = isFacingWall(myRobot, direction: myRobot.direction)
+
+        //
+        // Getting information about the walls around the robot
+        let myWallInfo = checkWalls(myRobot)
+        print(myWallInfo)
         
-        // Step 2.1c
-        // TODO: Save the return value of checkWalls() to a constant called myWallInfo.
-        
-        
-        // Step 2.2a
+        //
         // Categorize the robot's current location based on the number of walls
+        let isThreeWayJunction = (myWallInfo.numberOfWalls == 1)
+        let isTwoWayPath = (myWallInfo.numberOfWalls == 2)
+        let isDeadEnd = (myWallInfo.numberOfWalls == 3)
+    
+        //
+        // If the robot encounters a three way junction and there IS a wall ahead, it should randomly rotate right or left.
+        if isThreeWayJunction && robotIsBlocked {
+            randomlyRotateRightOrLeft(myRobot)
+        } else if isThreeWayJunction && !robotIsBlocked {
+            continueStraightOrRotate(myRobot)
+        }
         
-        // Uncomment the line of code below
-        // let isThreeWayJunction = (myWallInfo.numberOfWalls == 1)
+        if isTwoWayPath && robotIsBlocked {
+            randomlyRotateRightOrLeft(myRobot)
+        } else if isTwoWayPath && !robotIsBlocked {
+            continueStraightOrRotate(myRobot)
+        }
         
-        // TODO: Define the constant, isTwoWayPath
-        // TODO: Define the constant, isDeadEnd
-        
-        // Step 2.2b
-        // Test whether the values of the above constants are correct
-        
-        // Step 2.3a
-        // Three-way Path - else-if statements
-        
-        // TODO: If the robot encounters a three way junction and there IS a wall ahead, it should randomly rotate right or left. Uncomment the code below.
-        //        if isThreeWayJunction && robotIsBlocked {
-        //            randomlyRotateRightOrLeft(myRobot)
-        //        }
-        
-        // TODO: If the robot encounters a three way junction and there is NO wall ahead, it should continue straight or rotate (you need to write this else-if statement)
-        
-        
-        // Step 2.3b
-        // Two-way Path - else-if statements
-        
-        // TODO: If the robot encounters a two way path and there is NO wall ahead it should continue forward.
-        
-        // TODO: If the robot encounters a two way path and there IS a wall ahead, it should randomly rotate.
-        
-        
-        // Step 2.3c
-        // Dead end - else-if statements
-        
-        // TODO: If the robot encounters a dead end and there is NO wall ahead it should move forward.
-        
-        // TODO: If the robot encounters a dead end and there IS a wall ahead it should rotateRight().
+        if isDeadEnd && robotIsBlocked {
+            randomlyRotateRightOrLeft(myRobot)
+        } else if isDeadEnd && !robotIsBlocked {
+            continueStraightOrRotate(myRobot)
+        }
+
     }
     
     func previousMoveIsFinished(_ robot: ComplexRobotObject) {
