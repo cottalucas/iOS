@@ -21,24 +21,15 @@ UINavigationControllerDelegate, UITextFieldDelegate  {
 
     
     
-    
-    
-    // MARK: Object + Constructor
-    
-    struct Meme {
-        let topText: String
-        let bottomText: String
-        let originalImage: UIImage
-        let memedImage: UIImage
-    }
+
+    // MARK: Constructor
 
     func save() {
-        let memedImage = UIImage()
+        let memedImage = generateMemedImage()
         
         let _ = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imageView.image!, memedImage: memedImage)
     }
 
-    
     
     
     
@@ -51,13 +42,10 @@ UINavigationControllerDelegate, UITextFieldDelegate  {
         topText.delegate = self
         bottomText.delegate = self
     
-        // Initial text attributes
-        topText.defaultTextAttributes = memeTextAttributes
-        bottomText.defaultTextAttributes = memeTextAttributes
-        
-        // Text alignment
-        topText.textAlignment = .center
-        bottomText.textAlignment = .center
+        // Initial settings
+        configureTextField(textField: topText, text: "TOP", defaultAttributes: memeTextAttributes)
+        configureTextField(textField: bottomText, text: "BOTTOM", defaultAttributes: memeTextAttributes)
+
         
         // Hide share button
         shareButton.isEnabled = false
@@ -86,9 +74,24 @@ UINavigationControllerDelegate, UITextFieldDelegate  {
     
     
     
-    // MARK: Attributes (Keyboard + TextFiel)
+    // MARK: Delegates
     
-    // Text attributes
+    // Camera method selection
+    func presentImagePickerWith(sourceType: UIImagePickerControllerSourceType){
+        let pickerController = UIImagePickerController()
+        pickerController.sourceType = sourceType
+        
+        self.present(pickerController, animated: true, completion: nil)
+        
+        pickerController.delegate = self
+        
+    }
+    
+    
+    
+    // MARK: Attributes (Keyboard + TextField)
+    
+    // Textfield attributes
     let memeTextAttributes:[String:Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
@@ -97,6 +100,12 @@ UINavigationControllerDelegate, UITextFieldDelegate  {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
+    }
+    
+    func configureTextField(textField: UITextField, text: String, defaultAttributes: [String:Any]){
+        textField.defaultTextAttributes = defaultAttributes
+        textField.textAlignment = .center
+        textField.text = text
     }
     
     
@@ -123,15 +132,17 @@ UINavigationControllerDelegate, UITextFieldDelegate  {
     }
     
 
-    // Notification sender to slide the view up
+    // Notification sender to slide the view up on the bottom text field
     func keyboardWillShow(_ notification:Notification) {
-        view.frame.origin.y -= getKeyboardHeight(notification)        
+        if bottomText.isFirstResponder {
+                view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     //
     // Notification sender to slide the view back in the original position
     func keyboardWillHide(_ notification:Notification) {
-        view.frame.origin.y += getKeyboardHeight(notification)
+        view.frame.origin.y = 0
     }
     
     // Getting the keyboard height
@@ -141,31 +152,20 @@ UINavigationControllerDelegate, UITextFieldDelegate  {
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
     }
-
     
+
     
     
     // MARK: Actions
     
     // Picking the image from the album
     @IBAction func pickImageFromAlbum(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.sourceType = .photoLibrary
-        
-        self.present(pickerController, animated: true, completion: nil)
-        
-        pickerController.delegate = self
+       presentImagePickerWith(sourceType: .photoLibrary)
     }
     
     // Taking a picture as a image
     @IBAction func pickImageFromCamera(_ sender: Any) {
-        
-        let pickerController = UIImagePickerController()
-        pickerController.sourceType = .camera
-        
-        self.present(pickerController, animated: true, completion: nil)
-        
-        pickerController.delegate = self
+        presentImagePickerWith(sourceType: .camera)
     }
     
     // Canceling the current meme and returning to inital state

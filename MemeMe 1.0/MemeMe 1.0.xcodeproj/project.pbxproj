@@ -13,6 +13,7 @@
 		47035EB61EB959A800EFC200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47035EB31EB959A800EFC200 /* Main.storyboard */; };
 		47035EB81EB959BF00EFC200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47035EB71EB959BF00EFC200 /* Assets.xcassets */; };
 		47035EBA1EB95A8E00EFC200 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 47035EB91EB95A8E00EFC200 /* Info.plist */; };
+		47E2741A1EBF99710005C66C /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E274191EBF99710005C66C /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		47035EB71EB959BF00EFC200 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "MemeMe 1.0/Assets.xcassets"; sourceTree = "<group>"; };
 		47035EB91EB95A8E00EFC200 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "MemeMe 1.0/Info.plist"; sourceTree = "<group>"; };
 		472C99581EB89EBE00C75EF7 /* MemeMe 1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MemeMe 1.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47E274191EBF99710005C66C /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meme.swift; path = "MemeMe 1.0/Meme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 				47035EB71EB959BF00EFC200 /* Assets.xcassets */,
 				47035EB11EB959A800EFC200 /* LaunchScreen.storyboard */,
 				47035EB31EB959A800EFC200 /* Main.storyboard */,
+				47E274191EBF99710005C66C /* Meme.swift */,
 				47035EAD1EB9598300EFC200 /* AppDelegate.swift */,
 				47035EAE1EB9598300EFC200 /* ViewController.swift */,
 				47035EB91EB95A8E00EFC200 /* Info.plist */,
@@ -131,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47035EBA1EB95A8E00EFC200 /* Info.plist in Sources */,
+				47E2741A1EBF99710005C66C /* Meme.swift in Sources */,
 				47035EAF1EB9598300EFC200 /* AppDelegate.swift in Sources */,
 				47035EB01EB9598300EFC200 /* ViewController.swift in Sources */,
 			);

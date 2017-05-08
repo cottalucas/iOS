@@ -41,22 +41,13 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="efa-KS-tij">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="efa-KS-tij">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="lqZ-Zv-emQ">
-                                <rect key="frame" x="113" y="131" width="150" height="35"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="iPt-c0-geJ">
+                                <rect key="frame" x="112" y="578" width="150" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="5Wv-hY-zpf"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="iPt-c0-geJ">
-                                <rect key="frame" x="112" y="521" width="150" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="kcz-hg-H0B"/>
+                                    <constraint firstAttribute="height" constant="35" id="8nt-yX-tam"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -69,7 +60,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="MemeMe" id="076-Ne-k7P">
-                                        <barButtonItem key="leftBarButtonItem" title="📤" id="3HR-m6-88d">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="3HR-m6-88d">
                                             <connections>
                                                 <action selector="shareMeme:" destination="BYZ-38-t0r" id="GN7-xZ-fIW"/>
                                             </connections>
@@ -82,25 +73,34 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="lqZ-Zv-emQ">
+                                <rect key="frame" x="112" y="74" width="150" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="dmr-8h-EgF"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.85863757133483887" green="0.85912227630615234" blue="0.86258190870285034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="iPt-c0-geJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="96" id="377-Qz-7i6"/>
                             <constraint firstAttribute="trailing" secondItem="Yh5-g0-FW9" secondAttribute="trailing" id="5XP-oQ-KG9"/>
-                            <constraint firstItem="Yh5-g0-FW9" firstAttribute="top" secondItem="iPt-c0-geJ" secondAttribute="bottom" constant="67" id="7nD-e3-QDe"/>
                             <constraint firstItem="cKM-RY-vIp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8u8-81-0MB"/>
+                            <constraint firstItem="lqZ-Zv-emQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="96" id="9Jg-T9-nB5"/>
+                            <constraint firstItem="lqZ-Zv-emQ" firstAttribute="top" secondItem="cKM-RY-vIp" secondAttribute="bottom" constant="10" id="Dv2-Qn-AFO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lqZ-Zv-emQ" secondAttribute="trailing" constant="97" id="EIC-Ot-GLr"/>
                             <constraint firstItem="cKM-RY-vIp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L5p-b2-cXr"/>
                             <constraint firstAttribute="trailing" secondItem="cKM-RY-vIp" secondAttribute="trailing" id="MzQ-ed-soX"/>
                             <constraint firstItem="Yh5-g0-FW9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Q0r-2n-5lQ"/>
-                            <constraint firstItem="lqZ-Zv-emQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="111" id="TGs-i5-RSk"/>
                             <constraint firstItem="efa-KS-tij" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d1J-m6-jrI"/>
                             <constraint firstItem="efa-KS-tij" firstAttribute="top" secondItem="cKM-RY-vIp" secondAttribute="bottom" id="fVp-OO-EyE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iPt-c0-geJ" secondAttribute="trailing" constant="97" id="fXt-kG-IR4"/>
                             <constraint firstItem="Yh5-g0-FW9" firstAttribute="top" secondItem="efa-KS-tij" secondAttribute="bottom" id="ghB-eh-qbr"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yh5-g0-FW9" secondAttribute="bottom" id="hSS-90-QA7"/>
-                            <constraint firstItem="iPt-c0-geJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="96" id="o9C-fx-JSV"/>
                             <constraint firstAttribute="trailing" secondItem="efa-KS-tij" secondAttribute="trailing" id="t6N-Gb-FjM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iPt-c0-geJ" secondAttribute="trailing" constant="97" id="t7V-PQ-fON"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lqZ-Zv-emQ" secondAttribute="trailing" constant="96" id="tJg-Mz-5FJ"/>
-                            <constraint firstItem="lqZ-Zv-emQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="97" id="ynT-hG-6eq"/>
+                            <constraint firstItem="Yh5-g0-FW9" firstAttribute="top" secondItem="iPt-c0-geJ" secondAttribute="bottom" constant="10" id="zWd-Hi-zXC"/>
                         </constraints>
                     </view>
                     <connections>
